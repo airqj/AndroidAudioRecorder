@@ -279,9 +279,8 @@ public class AudioRecorderActivity extends AppCompatActivity
         if(recorder == null) {
             timerView.setText("00:00:00");
 
-            recorder = OmRecorder.wav(
-                    new PullTransport.Default(Util.getMic(source, channel, sampleRate), AudioRecorderActivity.this),
-                    new File(filePath));
+            PullTransport mPullTransport =  new PullTransport.Default(Util.getMic(source, channel, sampleRate), AudioRecorderActivity.this);
+            recorder = OmRecorder.wav(mPullTransport,new File(filePath));
         }
         recorder.resumeRecording();
 
